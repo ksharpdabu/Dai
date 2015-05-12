@@ -1,4 +1,4 @@
-package com.dabu.dai.ui_ccustom;
+package com.dabu.dai.ui_custom;
 
 import android.content.Context;
 import android.text.TextPaint;

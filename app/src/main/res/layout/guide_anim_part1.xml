@@ -52,8 +52,8 @@
             android:textSize="14.0dip" />
     </RelativeLayout>
 
-    <com.hdw.guideanim.view.ruler.RulerVertical
-        android:id="@id/guide_income_ruler"
+    <com.dabu.dai.ui_custom.RulerVertical
+        android:id="@+id/guide_income_ruler"
         android:layout_width="79.0dip"
         android:layout_height="372.0dip"
         android:layout_alignParentRight="true"
@@ -82,7 +82,7 @@
                 android:textColor="#ff666666"
                 android:textSize="14.0dip" />
 
-            <com.haodai.lib.views.BoldTextView
+            <com.dabu.dai.ui_custom.BoldTextView
                 android:id="@id/guide_income_tv_value"
                 android:layout_width="@dimen/guide_money_text_width"
                 android:layout_height="wrap_content"

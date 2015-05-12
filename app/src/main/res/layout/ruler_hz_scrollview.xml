@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
-    <com.hdw.guideanim.view.ruler.MyHzScrollView
+    <com.dabu.dai.ui_custom.MyHzScrollView
         android:id="@+id/hzScrollView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
@@ -10,7 +10,7 @@
             android:layout_width="626.0dip"
             android:layout_height="79.0dip"
             android:src="@drawable/guide_ruler_horizontal_value" />
-    </com.hdw.guideanim.view.ruler.MyHzScrollView>
+    </com.dabu.dai.ui_custom.MyHzScrollView>
 
 
 
