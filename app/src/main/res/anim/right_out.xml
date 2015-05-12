@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?><!--从左往右滑出屏幕，应用于车子的效果-->
+<set xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillEnabled="true"
+    android:fillAfter="true"
+>
+    <translate
+        android:duration="300"
+        android:fromXDelta="0.0"
+        android:toXDelta="100.0%p" />
+</set>

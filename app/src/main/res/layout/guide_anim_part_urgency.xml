@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:id="@id/guide_urgence_root"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@id/guide_urgency_tv_head"
+            android:layout_width="fill_parent"
+            android:layout_height="90.0dip"
+            android:gravity="center"
+            android:text="目前贷款紧急程度"
+            android:textColor="@color/guide_vehicle_text"
+            android:textSize="14.0dip" />
+
+        <ImageView
+            android:id="@id/guide_urgency_iv_own"
+            android:layout_width="@dimen/guide_vehicle_iv_car_width"
+            android:layout_height="@dimen/guide_vehicle_iv_car_height"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/guide_loan_urgency" />
+
+        <TextView
+            android:id="@id/guide_urgency_tv_own"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25.0dip"
+            android:gravity="center_horizontal"
+            android:text="急需贷款"
+            android:textColor="@color/guide_vehicle_text"
+            android:textSize="@dimen/guide_vehicle_textsize" />
+
+        <ImageView
+            android:id="@id/guide_urgency_iv_rent"
+            android:layout_width="@dimen/guide_vehicle_iv_car_width"
+            android:layout_height="@dimen/guide_vehicle_iv_car_height"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="47.0dip"
+            android:src="@drawable/guide_loan_not_urgency" />
+
+        <TextView
+            android:id="@id/guide_urgency_tv_rent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="25.0dip"
+            android:gravity="center_horizontal"
+            android:text="不着急，但想先咨询"
+            android:textColor="@color/guide_vehicle_text"
+            android:textSize="@dimen/guide_vehicle_textsize" />
+
+        <Button
+            android:id="@id/guide_urgency_iv_back"
+            android:layout_width="@dimen/guide_step_btn_width"
+            android:layout_height="@dimen/guide_step_btn_height"
+            android:layout_marginTop="44.0dip"
+            android:background="@drawable/guide_btn_next_step_selector"
+            android:text="上一步"
+            android:textColor="@color/guide_btn_next_step_text_color"
+            android:textSize="@dimen/guide_step_btn_textsize" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@id/guide_btn_quite"
+        android:layout_width="27.0dip"
+        android:layout_height="27.0dip"
+        android:layout_marginLeft="22.0dip"
+        android:layout_marginTop="30.0dip"
+        android:src="@drawable/guide_btn_quite_selector" />
+</RelativeLayout>

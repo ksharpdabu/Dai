@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@id/guide_layout_steps"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:gravity="center_horizontal"
+    android:paddingBottom="@dimen/guide_step_btn_padding_bottom">
+
+    <Button
+        android:id="@id/guide_btn_step_last"
+        android:layout_width="@dimen/guide_step_btn_width"
+        android:layout_height="@dimen/guide_step_btn_height"
+        android:layout_marginLeft="@dimen/guide_step_btn_margin_horizontal"
+        android:background="@drawable/guide_btn_next_step_selector"
+        android:text="上一步"
+        android:textColor="@color/guide_btn_next_step_text_color"
+        android:textSize="@dimen/guide_step_btn_textsize" />
+
+    <Button
+        android:id="@id/guide_btn_step_next"
+        android:layout_width="@dimen/guide_step_btn_width"
+        android:layout_height="@dimen/guide_step_btn_height"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/guide_step_btn_margin_horizontal"
+        android:background="@drawable/guide_btn_next_step_selector"
+        android:text="下一步"
+        android:textColor="@color/guide_btn_next_step_text_color"
+        android:textSize="@dimen/guide_step_btn_textsize" />
+</RelativeLayout>

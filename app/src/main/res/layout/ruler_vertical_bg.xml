@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="79.0dip"
+        android:layout_height="372.0dip"
+        android:src="@drawable/guide_ruler_vertical_bg"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="-10dip"
+        android:layout_marginTop="31dip"
+        android:src="@drawable/guide_ruler_vertical_pointer" />
+</FrameLayout>

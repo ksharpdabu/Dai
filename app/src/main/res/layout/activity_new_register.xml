@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/register_layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73.0dip"
+        android:src="@drawable/icon_logo_big" />
+
+    <LinearLayout
+        android:id="@id/register_sheet"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35.0dip"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@id/register_contact_et"
+            style="@style/edittext_style"
+            android:layout_width="fill_parent"
+            android:drawableLeft="@drawable/icon_mobile"
+            android:hint="请输入您的手机号"
+            android:inputType="phone"
+            android:maxLength="11" />
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13.0dip">
+
+            <Button
+                android:id="@id/register_get_verification_code_btn"
+                android:layout_width="134.0dip"
+                android:layout_height="50.0dip"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="13.0dip"
+                android:layout_marginRight="18.0dip"
+                android:background="@drawable/icon_register_get_verification_code_btn"
+                android:text="获取验证码"
+                android:textColor="@android:color/white"
+                android:textSize="17.0sp" />
+
+            <EditText
+                android:id="@id/register_verification_code_et"
+                style="@style/edittext_style"
+                android:layout_width="fill_parent"
+                android:layout_toLeftOf="@id/register_get_verification_code_btn"
+                android:drawableLeft="@drawable/icon_security"
+                android:hint="请输入验证码"
+                android:inputType="number"
+                android:maxLength="6" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@id/register_prompt_tv"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18.0dip"
+            android:layout_marginRight="18.0dip"
+            android:layout_marginTop="13.0dip"
+            android:background="@null"
+            android:text="您会收到一条短信，验证您的手机号，只想确认您是真要贷款，不会将您的手机号发给信贷经理。"
+            android:textColor="#ff999999"
+            android:textSize="14.0sp"  />
+
+        <Button
+            android:id="@id/register_confirm_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="50.0dip"
+            android:layout_marginLeft="18.0dip"
+            android:layout_marginRight="18.0dip"
+            android:layout_marginTop="13.0dip"
+            android:background="@drawable/button_login_selector"
+            android:text="登录"
+            android:textColor="#ffffffff"
+            android:textSize="17.0sp"
+            android:visibility="visible" />
+    </LinearLayout>
+</RelativeLayout>

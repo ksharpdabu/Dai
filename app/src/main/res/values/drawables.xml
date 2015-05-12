@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="drawable" name="transparent">#00000000</item>
+    <item type="drawable" name="white">#ffffffff</item>
+    <item type="drawable" name="gray">#ff4b4b4b</item>
+    <item type="drawable" name="credit_mgr_list_item_focus">#ff278cde</item>
+    <item type="drawable" name="credit_mgr_feedback_commit_bg_normal">#fff7f7f7</item>
+    <item type="drawable" name="credit_mgr_feedback_commit_bg_focus">#ffe5e5e5</item>
+    <item type="drawable" name="main_user_layout_bg_focus">#ff278cde</item>
+    <item type="drawable" name="main_user_layout_bg_normal">#ffffffff</item>
+    <item type="drawable" name="credit_mgr_detail_bottom_btn_normal">#fff7f7f7</item>
+    <item type="drawable" name="credit_mgr_detail_bottom_btn_press">#ffe5e5e5</item>
+    <item type="drawable" name="dialog_bg_mid_focus">#ff278cde</item>
+    <item type="drawable" name="list_item_divider_focus">#ffffffff</item>
+    <item type="drawable" name="list_item_divider_normal">#ffdee9ed</item>
+</resources>
