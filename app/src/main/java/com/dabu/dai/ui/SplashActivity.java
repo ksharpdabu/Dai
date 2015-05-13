@@ -21,7 +21,7 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash);
 
-        
+
     }
 }
 
