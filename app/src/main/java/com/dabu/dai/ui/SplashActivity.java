@@ -31,6 +31,7 @@ public class SplashActivity extends Activity {
         init();
     }
 
+
     /**
      * Handler:跳转到不同界面
      */
