@@ -46,8 +46,9 @@
         </activity>
         <activity
             android:name=".ui.Register"
-            android:label="@string/title_activity_fourth_hello"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+            android:label="@string/title_activity_fourth_hello" >
+
+
         </activity>
     </application>
 
