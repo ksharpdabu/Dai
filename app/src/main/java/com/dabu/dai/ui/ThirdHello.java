@@ -18,9 +18,6 @@ public class ThirdHello extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.third_hello, container, false);
 
-//		TextView tv = (TextView) v.findViewById(R.id.tvFragThird);
-//		tv.setText(getArguments().getString("msg"));
-
         return v;
     }
 

@@ -16,20 +16,14 @@ public class FirstHello extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.first_hello, container, false);
 
-//        TextView tv = (TextView) v.findViewById(R.id.tvFragFirst);
-//        tv.setText(getArguments().getString("msg"));
-
         return v;
     }
 
-    public static FirstHello newInstance(String text) {
-
-        FirstHello f = new FirstHello();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-//        f.setArguments(b);
-
-        return f;
-    }
+//    public static FirstHello newInstance(String text) {
+//
+//        FirstHello f = new FirstHello();
+//
+//
+//        return f;
+//    }
 }

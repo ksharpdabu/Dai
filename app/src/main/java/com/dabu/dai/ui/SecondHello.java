@@ -18,8 +18,7 @@ public class SecondHello extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.second_hello, container, false);
 
-//		TextView tv = (TextView) v.findViewById(R.id.tvFragSecond);
-//		tv.setText(getArguments().getString("msg"));
+
 
         return v;
     }

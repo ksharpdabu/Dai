@@ -35,15 +35,15 @@ public class HelloActivity extends FragmentActivity {
             switch (pos) {
 
                 case 0:
-                    return FirstHello.newInstance("FirstFragment, Instance 1");
+                    return new FirstHello();
                 case 1:
-                    return SecondHello.newInstance("SecondFragment, Instance 1");
+                    return new SecondHello();
                 case 2:
-                    return ThirdHello.newInstance("ThirdFragment, Instance 1");
+                    return new ThirdHello();
                 case 3:
-                    return FourthHello.newInstance("ThirdFragment, Instance 1");
+                    return new FourthHello();
                 default:
-                    return ThirdHello.newInstance("ThirdFragment, Default");
+                    return new ThirdHello();
             }
         }
 

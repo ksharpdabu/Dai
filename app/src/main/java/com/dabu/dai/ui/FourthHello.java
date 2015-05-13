@@ -31,19 +31,8 @@ public class FourthHello extends Fragment {
             }
         });
 
-
-
         return v;
     }
 
-    public static FourthHello newInstance(String text) {
 
-        FourthHello f = new FourthHello();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
-        return f;
-    }
 }
