@@ -135,7 +135,7 @@
     <string name="ask_whether_find_credit_mgr">您找到合适的信贷经理了吗</string>
     <string name="title_activity_guide_fill">GuideFill</string>
 
-    <string name="title_activity_splash">SplashActivity</string>
+    <!--<string name="title_activity_splash">SplashActivity</string>-->
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 
