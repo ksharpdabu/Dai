@@ -21,14 +21,5 @@ public class ThirdHello extends Fragment {
         return v;
     }
 
-    public static ThirdHello newInstance(String text) {
 
-        ThirdHello f = new ThirdHello();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
-        return f;
-    }
 }

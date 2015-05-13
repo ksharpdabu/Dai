@@ -23,14 +23,5 @@ public class SecondHello extends Fragment {
         return v;
     }
 
-    public static SecondHello newInstance(String text) {
 
-        SecondHello f = new SecondHello();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
-        return f;
-    }
 }
