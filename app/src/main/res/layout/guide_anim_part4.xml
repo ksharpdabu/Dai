@@ -57,8 +57,8 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/guide_money_bank" />
 
-    <com.hdw.guideanim.view.ruler.RulerHorizontal
-        android:id="@id/guide_money_ruler"
+    <com.dabu.dai.ui_custom.RulerHorizontal
+        android:id="@+id/guide_money_ruler"
         android:layout_width="@dimen/guide_money_ruler_width"
         android:layout_height="@dimen/guide_money_ruler_height"
         android:layout_below="@id/guide_money_iv_bank"

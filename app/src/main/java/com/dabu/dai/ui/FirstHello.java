@@ -1,6 +1,8 @@
 package com.dabu.dai.ui;
 
+
 import android.os.Bundle;
+
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +21,6 @@ public class FirstHello extends Fragment {
         return v;
     }
 
-//    public static FirstHello newInstance(String text) {
-//
-//        FirstHello f = new FirstHello();
-//
-//
-//        return f;
-//    }
+
 }
+

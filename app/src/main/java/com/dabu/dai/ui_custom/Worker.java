@@ -3,7 +3,8 @@ package com.dabu.dai.ui_custom;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.haodai.quickloan.R;
+import com.dabu.dai.R;
+
 
 /**
  * Created by HIPAA on 2015/4/20.
