@@ -63,7 +63,7 @@ public class Register extends Activity {
 
 
                 if(isMobileNO(phoneNumber)) {
-                    Intent intent  = new Intent(Register.this , TestActivity.class);
+                    Intent intent  = new Intent(Register.this , GuidePart1Activity.class);
                     Register.this.startActivity(intent);
                     Register.this.finish();
                 } else {
