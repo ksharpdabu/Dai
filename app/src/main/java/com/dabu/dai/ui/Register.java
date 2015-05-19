@@ -15,27 +15,30 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dabu.dai.R;
+import com.dabu.dai.business.Controller;
 
 /**
  * Created by HIPAA on 2015/5/13.
  */
 public class Register extends Activity {
 
-    // ¶¨Òå±£´æµÄPreferencesÃû³Æ
+    // å®šä¹‰ä¿å­˜çš„Preferencesåç§°
     private static final String PREF_NAME = "pref_haodai";
-    // ¶¨Òå±£´æÔÚPreferencesÖĞÊı¾İµÄkey
+    // å®šä¹‰ä¿å­˜åœ¨Preferencesä¸­æ•°æ®çš„key
     private static final String PREF_KEY = "pref_phoneNumber";
 
     private Button loginButton;
     private TextView textView;
     private EditText editText;
 
+    private Controller mController = new Controller(this);
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //È¥µôActivityÉÏÃæµÄ×´Ì¬À¸
+        //å»æ‰Activityä¸Šé¢çš„çŠ¶æ€æ 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -56,19 +59,24 @@ public class Register extends Activity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //»ñÈ¡ÓÃ»§ÊäÈëµÄÊÖ»úºÅÂë
+                //è·å–ç”¨æˆ·è¾“å…¥çš„æ‰‹æœºå·ç 
                 String phoneNumber = editText.getText().toString().trim();
 
-//Ìø¹ıÊäÈë£¬·½±ã²âÊÔ
 
+                if(Controller.isMobileRight(phoneNumber)  ) {
+                   if( mController.isFirstApply()){
+                        Intent intent  = new Intent(Register.this , GuidePart1Activity.class);
+                        Register.this.startActivity(intent);
+                        Register.this.finish();
+                   } else{
+                       Intent intent  = new Intent(Register.this , TestActivity.class);
+                       Register.this.startActivity(intent);
+                       Register.this.finish();
 
-                if(isMobileNO(phoneNumber)) {
-                    Intent intent  = new Intent(Register.this , GuidePart1Activity.class);
-                    Register.this.startActivity(intent);
-                    Register.this.finish();
+                   }
                 } else {
                     Toast.makeText(Register.this,
-                            "ÊÖ»úºÅÂë²»ºÏ·¨",
+                            "æ‰‹æœºå·ç ä¸åˆæ³•",
                             Toast.LENGTH_LONG).show();
                 }
 
@@ -80,20 +88,7 @@ public class Register extends Activity {
 
 
 
-    /**
-     * ÑéÖ¤ÊÖ»ú¸ñÊ½
-     */
-    public static boolean isMobileNO(String mobiles) {
-        /*
-        ÒÆ¶¯£º134¡¢135¡¢136¡¢137¡¢138¡¢139¡¢150¡¢151¡¢157(TD)¡¢158¡¢159¡¢187¡¢188
-        ÁªÍ¨£º130¡¢131¡¢132¡¢152¡¢155¡¢156¡¢185¡¢186
-        µçĞÅ£º133¡¢153¡¢180¡¢189¡¢£¨1349ÎÀÍ¨£©
-        ×Ü½áÆğÀ´¾ÍÊÇµÚÒ»Î»±Ø¶¨Îª1£¬µÚ¶şÎ»±Ø¶¨Îª3»ò5»ò8£¬ÆäËûÎ»ÖÃµÄ¿ÉÒÔÎª0-9
-        */
-        String telRegex = "[1][358]\\d{9}";//"[1]"´ú±íµÚ1Î»ÎªÊı×Ö1£¬"[358]"´ú±íµÚ¶şÎ»¿ÉÒÔÎª3¡¢5¡¢8ÖĞµÄÒ»¸ö£¬"\\d{9}"´ú±íºóÃæÊÇ¿ÉÒÔÊÇ0¡«9µÄÊı×Ö£¬ÓĞ9Î»¡£
-        if (TextUtils.isEmpty(mobiles)) return false;
-        else return mobiles.matches(telRegex);
-    }
+
 
 
 }

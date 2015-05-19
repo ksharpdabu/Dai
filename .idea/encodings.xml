@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/app/build.gradle" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/business/Controller.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/FirstHello.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/FourthHello.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/GuideFill.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/GuidePart1Activity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/GuideUrgency.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/HelloActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/Register.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/SplashActivity.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

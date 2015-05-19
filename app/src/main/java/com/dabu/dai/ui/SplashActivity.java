@@ -3,13 +3,20 @@ package com.dabu.dai.ui;
 
 import android.app.Activity;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Toast;
 
 import com.dabu.dai.R;
+import com.dabu.dai.business.Controller;
+
+import java.util.ResourceBundle;
 
 
 /**
@@ -17,15 +24,17 @@ import com.dabu.dai.R;
  *
  */
 public class SplashActivity extends Activity {
-    // ÅĞ¶ÏÊÇ·ñµÚÒ»´ÎÊ¹ÓÃapp
-    boolean isFirstIn = false;
+    // åˆ¤æ–­æ˜¯å¦ç¬¬ä¸€æ¬¡ä½¿ç”¨app
+//    boolean isFirstIn = false;
 
     private static final int GO_HOME = 1000;
     private static final int GO_GUIDE = 1001;
 
-    private final int SPLASH_DELAY_MILLIS = 2000; // ÑÓ³Ù2s
+    private final int SPLASH_DELAY_MILLIS = 2000; // å»¶è¿Ÿ2s
 
-    private static final String SHAREDPREFERENCES_NAME = "first_pref";
+    private Controller mController = new Controller( this);
+
+//    private static final String SHAREDPREFERENCES_NAME = "first_pref";
 
 
     @Override
@@ -34,12 +43,12 @@ public class SplashActivity extends Activity {
 
         setContentView(R.layout.splash);
 
-        isFirstRun();
+        whereGo(mController.isFirstRun() , mController.detectNetwork());
     }
 
 
     /**
-     * Handler:Ìø×ªµ½²»Í¬½çÃæ
+     * Handler:è·³è½¬åˆ°ä¸åŒç•Œé¢
      */
     private Handler mHandler = new Handler() {
 
@@ -59,30 +68,30 @@ public class SplashActivity extends Activity {
 
 
 
-    private void isFirstRun() {
-
-        // ¶ÁÈ¡SharedPreferencesÖĞĞèÒªµÄÊı¾İ
-        // Ê¹ÓÃSharedPreferencesÀ´¼ÇÂ¼³ÌĞòµÄÊÇ·ñÊÇµÚÒ»´ÎÔËĞĞ
-        SharedPreferences preferences = getSharedPreferences(
-                SHAREDPREFERENCES_NAME, MODE_PRIVATE);
-
-        // È¡µÃÏàÓ¦µÄÖµ£¬Èç¹ûÃ»ÓĞ¸ÃÖµ£¬ËµÃ÷»¹Î´Ğ´Èë£¬ÓÃtrue×÷ÎªÄ¬ÈÏÖµ
-        isFirstIn = preferences.getBoolean("isFirstIn", true);
-
-        // ÅĞ¶Ï³ÌĞòÓëµÚ¼¸´ÎÔËĞĞ£¬Èç¹ûÊÇµÚÒ»´ÎÔËĞĞÔòÌø×ªµ½Òıµ¼½çÃæ£¬·ñÔòÌø×ªµ½Ö÷½çÃæ
-        if (isFirstIn) {
-            // Ê¹ÓÃHandlerµÄpostDelayed·½·¨£¬2ÃëºóÖ´ĞĞÌø×ªµ½MainActivity
-
-            preferences.edit().putBoolean("isFirstIn", false).commit();
-            mHandler.sendEmptyMessageDelayed(GO_GUIDE, SPLASH_DELAY_MILLIS);
-
-
-        } else {
-            mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
-        }
-
-
-    }
+//      private void isFirstRun() {
+//
+//        // è¯»å–SharedPreferencesä¸­éœ€è¦çš„æ•°æ®
+//        // ä½¿ç”¨SharedPreferencesæ¥è®°å½•ç¨‹åºçš„æ˜¯å¦æ˜¯ç¬¬ä¸€æ¬¡è¿è¡Œ
+//        SharedPreferences preferences = getSharedPreferences(
+//                SHAREDPREFERENCES_NAME, MODE_PRIVATE);
+//
+//        // å–å¾—ç›¸åº”çš„å€¼ï¼Œå¦‚æœæ²¡æœ‰è¯¥å€¼ï¼Œè¯´æ˜è¿˜æœªå†™å…¥ï¼Œç”¨trueä½œä¸ºé»˜è®¤å€¼
+//        isFirstIn = preferences.getBoolean("isFirstIn", true);
+//
+//        // åˆ¤æ–­ç¨‹åºä¸ç¬¬å‡ æ¬¡è¿è¡Œï¼Œå¦‚æœæ˜¯ç¬¬ä¸€æ¬¡è¿è¡Œåˆ™è·³è½¬åˆ°å¼•å¯¼ç•Œé¢ï¼Œå¦åˆ™è·³è½¬åˆ°ä¸»ç•Œé¢
+//        if (isFirstIn) {
+//            // ä½¿ç”¨Handlerçš„postDelayedæ–¹æ³•ï¼Œ2ç§’åæ‰§è¡Œè·³è½¬åˆ°MainActivity
+//
+//            preferences.edit().putBoolean("isFirstIn", false).commit();
+//            mHandler.sendEmptyMessageDelayed(GO_GUIDE, SPLASH_DELAY_MILLIS);
+//
+//
+//        } else {
+//            mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
+//        }
+//
+//
+//    }
 
     private void goGuide() {
         Intent intent = new Intent(SplashActivity.this, HelloActivity.class);
@@ -96,6 +105,57 @@ public class SplashActivity extends Activity {
         SplashActivity.this .startActivity(intent);
         SplashActivity.this.finish();
     }
+
+
+
+    private void  whereGo(boolean first , boolean network) {
+
+        if (network) {
+
+            if (first) {
+                mHandler.sendEmptyMessageDelayed(GO_GUIDE, SPLASH_DELAY_MILLIS);
+            } else {
+                mHandler.sendEmptyMessageDelayed(GO_HOME, SPLASH_DELAY_MILLIS);
+            }
+
+        } else {
+            showAlertDialog(this, "æ— ç½‘ç»œè¿æ¥",
+                    "è¯·å…ˆè¿æ¥ç½‘ç»œ", false);
+//            Toast.makeText(this,"æ— ç½‘ç»œ", Toast.LENGTH_LONG).show();
+        }
+    }
+
+    /**
+     * Function to display simple Alert Dialog
+     * @param context - application context
+     * @param title - alert dialog title
+     * @param message - alert message
+     * @param status - success/failure (used to set icon)
+     * */
+    public void showAlertDialog(Context context, String title, String message, Boolean status) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+
+        // Setting Dialog Title
+        alertDialog.setTitle(title);
+
+        // Setting Dialog Message
+        alertDialog.setMessage(message);
+
+        // Setting alert dialog icon
+//        alertDialog.setIcon((status) ? R.drawable.success : R.drawable.fail);
+
+        // Setting OK Button
+        alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        // Showing Alert Message
+        alertDialog.show();
+    }
 }
+
+
+
 
 
