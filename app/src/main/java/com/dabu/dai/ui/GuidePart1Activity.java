@@ -2,8 +2,10 @@ package com.dabu.dai.ui;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dabu.dai.R;
+
 import com.dabu.dai.ui_custom.BoldTextView;
 import com.dabu.dai.ui_custom.Boss;
 import com.dabu.dai.ui_custom.MyScrollView;
@@ -25,7 +28,7 @@ import com.dabu.dai.ui_custom.Worker;
 public class GuidePart1Activity extends Activity {
 
 
-    private RulerVertical incomeRuler;
+
     private Boss boss;
     private Worker worker;
     private View bossCharater;
@@ -49,6 +52,7 @@ public class GuidePart1Activity extends Activity {
 
 
     private MyScrollView scrollView1;
+    private RulerVertical incomeRuler;
 
     private int i = 1;
     private View.OnClickListener listener1;
@@ -81,28 +85,24 @@ public class GuidePart1Activity extends Activity {
         this.guidestep = findViewById(R.id.guide_layout_steps);
 
         this.incomeValue = (BoldTextView)findViewById(R.id.guide_income_tv_value);
-        this.incomeValue.setVisibility(View.INVISIBLE);
+
         this.scrollView1 = (MyScrollView) findViewById(R.id.vtScrollView);
 
         this.boss = new Boss( findViewById(R.id.guide_character_layout_boss));
+        this.bossCharater = findViewById(R.id.guide_character_layout_boss);
         this.bossBody = this.boss.getIvBody();
-        this.bossBody.setVisibility(View.INVISIBLE);
+
         this.worker = new Worker( findViewById(R.id.guide_character_layout_worker));
+        this.workerCharater = findViewById(R.id.guide_character_layout_worker);
         this.workerBody = this.worker.getIvBody();
-        this.workerBody.setVisibility(View.INVISIBLE);
-        this.incomeRuler.setVisibility(View.INVISIBLE);
-        this.headLayout.setVisibility(View.INVISIBLE);
-        this.cityLayout.setVisibility(View.INVISIBLE);
-        this.incomeLayout.setVisibility(View.INVISIBLE);
-        this.imageLocation.setVisibility(View.INVISIBLE);
-        this.guidestep.setVisibility(View.INVISIBLE);
+
 
         this.buttonPre = (Button)findViewById(R.id.guide_btn_step_last);
         this.buttonNext = (Button)findViewById(R.id.guide_btn_step_next);
 
 
 
-
+        toggleInvisible();
 
         bossClick();
         workerClick();
@@ -110,88 +110,153 @@ public class GuidePart1Activity extends Activity {
 
     }
 
-    public void bossClick() {
-        //点击boss头像
-        boss.getIvHead().setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                bossBody.setVisibility(View.VISIBLE);
-//                设置不可点击
-                boss.getIvHead().setClickable(false);
-                worker.getIvHead().setVisibility(View.GONE);
-                iamWorker.setVisibility(View.GONE);
-                iamBoss.setVisibility(View.GONE);
 
 
-
-
-
-
-                Animation alpha = AnimationUtils.loadAnimation(GuidePart1Activity.this,R.anim.my_character_down);
-                bossCharater = findViewById(R.id.guide_character_layout_boss);
-                bossCharater.startAnimation(alpha);
-
-                incomeLayout.setVisibility(View.VISIBLE);
-                incomeRuler.setVisibility(View.VISIBLE);
-                guidestep.setVisibility(View.VISIBLE);
-                incomeValue.setVisibility(View.VISIBLE);
-
-
-
-
-                listener2 = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-
-
-                        Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
-                        startActivity(intent);
-
-
-                    }
-                };
-
-
-                listener1 = new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        incomeRuler.setVisibility(View.INVISIBLE);
-                        incomeLayout.setVisibility(View.INVISIBLE);
-                        cityLayout.setVisibility(View.VISIBLE);
-                        imageLocation.setVisibility(View.VISIBLE);
-
-                        Animation alpha = AnimationUtils.loadAnimation(GuidePart1Activity.this, R.anim.my_boss_scale);
-                        bossCharater.startAnimation(alpha);
-
-                        buttonNext.setOnClickListener(listener2);
-                    }
-                };
-                buttonNext.setOnClickListener(listener1);
-
-                incomeValue.setText("100");
-
-                scrollView1.setScrollViewListener(
-                        new MyScrollView.OnScrollChangedListener() {
-
-                            @Override
-                            public void onScrollChanged(MyScrollView view, int l, int t, int oldl, int oldt) {
-
-                                // 将滑动距离进行百分制划分，与图片刻度对其
-                                float value =  (float)t / 660  ;
-                                int value2 = 100- (int) (value*100);
-                                if( value2 == 0) {
-                                    value2 = value2+1;
-                                }
-                                incomeValue.setText(String.valueOf(value2));
-//                                Toast.makeText(getApplicationContext(), String.valueOf(value2), Toast.LENGTH_LONG).show();
-                            }
-                        }
-                );
-
-            }
-        });
+    public void toggleInvisible() {
+        this.incomeValue.setVisibility(View.INVISIBLE);
+        this.workerBody.setVisibility(View.INVISIBLE);
+        this.incomeRuler.setVisibility(View.INVISIBLE);
+        this.headLayout.setVisibility(View.INVISIBLE);
+        this.cityLayout.setVisibility(View.INVISIBLE);
+        this.incomeLayout.setVisibility(View.INVISIBLE);
+        this.imageLocation.setVisibility(View.INVISIBLE);
+        this.guidestep.setVisibility(View.INVISIBLE);
+        this.bossBody.setVisibility(View.INVISIBLE);
     }
+
+    public void stepClickBefore() {
+        incomeLayout.setVisibility(View.VISIBLE);
+        incomeRuler.setVisibility(View.VISIBLE);
+        guidestep.setVisibility(View.VISIBLE);
+        incomeValue.setVisibility(View.VISIBLE);
+    }
+
+
+    
+    public void stepClickAfter() {
+        incomeRuler.setVisibility(View.INVISIBLE);
+        incomeLayout.setVisibility(View.INVISIBLE);
+        cityLayout.setVisibility(View.VISIBLE);
+        imageLocation.setVisibility(View.VISIBLE);
+    }
+
+
+    public void setAnimation(Context context ,View v, int id) {
+        Animation alpha = AnimationUtils.loadAnimation(context, id);
+        v.startAnimation(alpha);
+    }
+
+    public void bossClick() {
+
+        //点击boss头像
+        boss.getIvHead().setOnClickListener(new View.OnClickListener() {
+                                                @Override
+                              public void onClick(View v) {
+
+                                  bossBody.setVisibility(View.VISIBLE);
+                                //                设置不可点击
+                                  boss.getIvHead().setClickable(false);
+                                  worker.getIvHead().setVisibility(View.GONE);
+                                  iamWorker.setVisibility(View.GONE);
+                                  iamBoss.setVisibility(View.GONE);
+
+                                  //设置动画
+                                  setAnimation(GuidePart1Activity.this, bossCharater, R.anim.my_character_down);
+
+                                  stepClickBefore();
+
+
+                                  //上一步按钮
+                                  final View.OnClickListener   listener3 =   new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          //设置动画
+                                          setAnimation(GuidePart1Activity.this, bossCharater, R.anim.my_boss_up);
+                                          incomeLayout.setVisibility(View.INVISIBLE);
+                                          incomeRuler.setVisibility(View.INVISIBLE);
+                                          guidestep.setVisibility(View.INVISIBLE);
+                                          incomeValue.setVisibility(View.INVISIBLE);
+
+                                          bossBody.setVisibility(View.INVISIBLE);
+                                          //                设置可点击
+                                          boss.getIvHead().setClickable(true);
+                                          worker.getIvHead().setVisibility(View.VISIBLE);
+                                          iamWorker.setVisibility(View.VISIBLE);
+                                          iamBoss.setVisibility(View.VISIBLE);
+
+
+                                      }
+                                  };
+                                  buttonPre.setOnClickListener(listener3);
+
+                                  listener2 = new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
+                                          startActivity(intent);
+
+                                      }
+                                  };
+
+
+                                  listener1 = new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          stepClickAfter();
+
+                                            //设置动画
+                                          setAnimation(GuidePart1Activity.this,bossCharater,R.anim.my_boss_scale);
+//
+
+                                          buttonNext.setOnClickListener(listener2);
+
+                                          buttonPre.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  //设置动画
+                                                  setAnimation(GuidePart1Activity.this, bossCharater, R.anim.my_boss_uscale);
+                                                  incomeRuler.setVisibility(View.VISIBLE);
+                                                  incomeLayout.setVisibility(View.VISIBLE);
+                                                  cityLayout.setVisibility(View.INVISIBLE);
+                                                  imageLocation.setVisibility(View.INVISIBLE);
+
+                                                  buttonPre.setOnClickListener(listener3);
+                                              }
+                                          });
+
+                                      }
+                                  };
+                                  buttonNext.setOnClickListener(listener1);
+
+                                  incomeValue.setText("100");
+
+                                  scrollView1.setScrollViewListener(
+                                          new MyScrollView.OnScrollChangedListener() {
+
+                                              @Override
+                                              public void onScrollChanged(MyScrollView view, int l, int t, int oldl, int oldt) {
+
+                                                  // 将滑动距离进行百分制划分，与图片刻度对其
+                                                  float value = (float) t / 660;
+                                                  int value2 = 100 - (int) (value * 100);
+                                                  if (value2 == 0) {
+                                                      value2 = value2 + 1;
+                                                  }
+                                                  incomeValue.setText(String.valueOf(value2));
+//                                Toast.makeText(getApplicationContext(), String.valueOf(value2), Toast.LENGTH_LONG).show();
+                                               }
+                                          }
+                                  );
+                               }
+            }
+        );
+
+    }
+
+
+
+
+
 
     public void workerClick() {
         //点击worker头像
@@ -209,29 +274,21 @@ public class GuidePart1Activity extends Activity {
 
 
 
+                //设置动画
+                setAnimation(GuidePart1Activity.this, workerCharater, R.anim.my_character_up);
 
-
-                Animation alpha = AnimationUtils.loadAnimation(GuidePart1Activity.this,R.anim.my_character_up);
-                workerCharater = findViewById(R.id.guide_character_layout_worker);
-                workerCharater.startAnimation(alpha);
-
-
-
+                //替换尺子背景
                 ImageView imageView = (ImageView) findViewById(R.id.ruler_value_iv);
                 imageView.setImageResource(R.drawable.guide_ruler_vertical_value_worker);
 
 
-                incomeLayout.setVisibility(View.VISIBLE);
-                incomeRuler.setVisibility(View.VISIBLE);
-                incomeValue.setVisibility(View.VISIBLE);
-                guidestep.setVisibility(View.VISIBLE);
+                stepClickBefore();
 
 
 
                 listener2 = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
 
                         Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
                         startActivity(intent);
@@ -244,20 +301,15 @@ public class GuidePart1Activity extends Activity {
                 listener1 = new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        incomeRuler.setVisibility(View.INVISIBLE);
-                        incomeLayout.setVisibility(View.INVISIBLE);
-                        cityLayout.setVisibility(View.VISIBLE);
-                        imageLocation.setVisibility(View.VISIBLE);
+                        stepClickAfter();
 
-                        Animation alpha = AnimationUtils.loadAnimation(GuidePart1Activity.this, R.anim.my_worker_scale);
-                        workerCharater.startAnimation(alpha);
+                        //设置动画
+                        setAnimation(GuidePart1Activity.this,workerCharater,R.anim.my_worker_scale);
 
                         buttonNext.setOnClickListener(listener2);
                     }
                 };
                 buttonNext.setOnClickListener(listener1);
-
-
 
 
                 scrollView1.setScrollViewListener(
@@ -277,7 +329,6 @@ public class GuidePart1Activity extends Activity {
                             }
                         }
                 );
-
 
             }
         });

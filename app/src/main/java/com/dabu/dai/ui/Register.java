@@ -63,17 +63,20 @@ public class Register extends Activity {
                 String phoneNumber = editText.getText().toString().trim();
 
 
-                if(Controller.isMobileRight(phoneNumber)  ) {
-                   if( mController.isFirstApply()){
+//                if(Controller.isMobileRight(phoneNumber)  )
+                if(true  ) {
+//       为了方便测试
+//            if( mController.isFirstApply())
+                    if( true){
                         Intent intent  = new Intent(Register.this , GuidePart1Activity.class);
                         Register.this.startActivity(intent);
                         Register.this.finish();
-                   } else{
-                       Intent intent  = new Intent(Register.this , TestActivity.class);
-                       Register.this.startActivity(intent);
-                       Register.this.finish();
+                    } else{
+                        Intent intent  = new Intent(Register.this , TestActivity.class);
+                        Register.this.startActivity(intent);
+                        Register.this.finish();
 
-                   }
+                    }
                 } else {
                     Toast.makeText(Register.this,
                             "手机号码不合法",
