@@ -6,7 +6,7 @@
     android:background="#ffffffff">
 
     <ImageView
-        android:id="@id/guide_city_iv_location"
+        android:id="@+id/guide_city_iv_location"
         android:layout_width="@dimen/guide_income_icon_location_width"
         android:layout_height="@dimen/guide_income_icon_location_height"
         android:layout_centerHorizontal="true"

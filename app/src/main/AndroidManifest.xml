@@ -79,6 +79,10 @@
             android:name=".ui.GuideFill"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
+        <activity
+            android:name="com.dabu.city.CityListActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+        </activity>
     </application>
 
 </manifest>

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dabu.city.CityListActivity;
 import com.dabu.dai.R;
 
 import com.dabu.dai.ui_custom.BoldTextView;
@@ -206,7 +207,14 @@ public class GuidePart1Activity extends Activity {
 
                                             //设置动画
                                           setAnimation(GuidePart1Activity.this,bossCharater,R.anim.my_boss_scale);
-//
+
+                                          cityName.setOnClickListener(new View.OnClickListener() {
+                                              @Override
+                                              public void onClick(View v) {
+                                                  Intent intent = new Intent(GuidePart1Activity.this, CityListActivity.class);
+                                                  startActivity(intent);
+                                              }
+                                          });
 
                                           buttonNext.setOnClickListener(listener2);
 

@@ -2,6 +2,20 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/build.gradle" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/CityListActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/adapter/CityAdapter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/data/CityData.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/model/CityItem.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/ContactItemComparator.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/ContactItemException.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/ContactItemInterface.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/ContactListAdapter.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/ContactListView.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/ContactListViewImpl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/ContactsSectionIndexer.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/IndexScroller.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/pinyin/HanziToPinyin3.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/city/widget/pinyin/PinYin.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/business/Controller.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/FirstHello.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/FourthHello.java" charset="UTF-8" />
@@ -11,6 +25,15 @@
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/HelloActivity.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/Register.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/dabu/dai/ui/SplashActivity.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/color/color.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/icon_search.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/line.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/listitem_selector.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/search_bg.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/search_puin.9.png" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/city_item.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/layout/citylist.xml" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/src/main/res/menu/main.xml" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>
