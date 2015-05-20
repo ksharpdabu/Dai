@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.dabu.dai.R;
@@ -15,6 +16,7 @@ import com.dabu.dai.R;
 public class GuidePart3Activity extends Activity {
     private ImageView houseImage;
     private ImageView nohouseImage;
+    private Button mButton;
 
 
 
@@ -31,6 +33,17 @@ public class GuidePart3Activity extends Activity {
     public void init() {
         houseImage = (ImageView)findViewById(R.id.guide_house_iv_own);
         nohouseImage = (ImageView)findViewById(R.id.guide_house_iv_rent);
+        mButton = (Button) findViewById(R.id.guide_house_iv_back);
+
+
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuidePart3Activity.this , GuidePart2Activity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         houseImage.setClickable(true);
         nohouseImage.setClickable(true);

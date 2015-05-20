@@ -58,6 +58,10 @@ public class GuidePart1Activity extends Activity {
     private int i = 1;
     private View.OnClickListener listener1;
     private View.OnClickListener listener2;
+    private View.OnClickListener   listener3;
+    private View.OnClickListener   listener4;
+
+    public  final static int  STATIC_INTEGER_VALUE = 1230;
 
 
 
@@ -70,6 +74,20 @@ public class GuidePart1Activity extends Activity {
         init();
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch(requestCode) {
+            case (STATIC_INTEGER_VALUE) : {
+                if (resultCode == Activity.RESULT_OK) {
+                    String newText = data.getStringExtra("CITY");
+                    cityName.setText(newText);
+                }
+                break;
+            }
+        }
+    }
 
     public void init()
     {
@@ -167,8 +185,7 @@ public class GuidePart1Activity extends Activity {
                                   stepClickBefore();
 
 
-                                  //上一步按钮
-                                  final View.OnClickListener   listener3 =   new View.OnClickListener() {
+                                  listener4 =   new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
                                           //设置动画
@@ -188,7 +205,17 @@ public class GuidePart1Activity extends Activity {
 
                                       }
                                   };
-                                  buttonPre.setOnClickListener(listener3);
+                                  buttonPre.setOnClickListener(listener4);
+
+                                  listener3 = new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
+                                          startActivity(intent);
+                                      }
+                                  };
+
+
 
                                   listener2 = new View.OnClickListener() {
                                       @Override
@@ -212,7 +239,10 @@ public class GuidePart1Activity extends Activity {
                                               @Override
                                               public void onClick(View v) {
                                                   Intent intent = new Intent(GuidePart1Activity.this, CityListActivity.class);
-                                                  startActivity(intent);
+
+
+                                                  startActivityForResult(intent, STATIC_INTEGER_VALUE);
+
                                               }
                                           });
 
@@ -228,7 +258,8 @@ public class GuidePart1Activity extends Activity {
                                                   cityLayout.setVisibility(View.INVISIBLE);
                                                   imageLocation.setVisibility(View.INVISIBLE);
 
-                                                  buttonPre.setOnClickListener(listener3);
+                                                  buttonPre.setOnClickListener(listener4);
+                                                  buttonNext.setOnClickListener(listener1);
                                               }
                                           });
 

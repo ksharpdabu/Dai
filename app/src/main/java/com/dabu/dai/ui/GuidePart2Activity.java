@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import com.dabu.dai.R;
@@ -18,6 +19,7 @@ public class GuidePart2Activity extends Activity {
 
     private ImageView car;
     private ImageView bus;
+    private Button mbutton;
 
 
     @Override
@@ -29,10 +31,25 @@ public class GuidePart2Activity extends Activity {
         init();
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+    }
 
     public void init() {
         car = (ImageView) findViewById(R.id.guide_vehicle_iv_car);
         bus = (ImageView) findViewById(R.id.guide_vehicle_iv_bus);
+        mbutton = (Button) findViewById(R.id.guide_vehicle_iv_back);
+
+
+        mbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               onBackPressed();
+
+            }
+        });
 
 
         car.setOnClickListener(new View.OnClickListener() {

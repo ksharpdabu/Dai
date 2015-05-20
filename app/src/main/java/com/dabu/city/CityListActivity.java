@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -65,9 +66,14 @@ public class CityListActivity extends Activity implements TextWatcher
 				List<ContactItemInterface> searchList = inSearchMode ? filterList
 						: contactList;
 
-				Toast.makeText(context_,
-						searchList.get(position).getDisplayInfo(),
-						Toast.LENGTH_SHORT).show();
+//				Toast.makeText(context_,
+//						searchList.get(position).getDisplayInfo(),
+//						Toast.LENGTH_SHORT).show();
+
+				Intent resultIntent = new Intent( );
+				resultIntent.putExtra("CITY", searchList.get(position).getDisplayInfo());
+				setResult(Activity.RESULT_OK, resultIntent);
+				finish();
 			}
 		});
 

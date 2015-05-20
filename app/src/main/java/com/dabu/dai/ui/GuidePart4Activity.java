@@ -38,6 +38,10 @@ public class GuidePart4Activity extends Activity {
         this.buttonNext = (Button)findViewById(R.id.guide_btn_step_next);
         this.incomeValue = (TextView)findViewById(R.id.guide_money_tv_number);
 
+
+
+
+
         //获取尺子滑动的距离
         scrollView1 = (MyHzScrollView) findViewById(R.id.hzScrollView);
         scrollView1.setHzScrollViewListener(
@@ -66,12 +70,22 @@ public class GuidePart4Activity extends Activity {
 
 
 
-        buttonNext.setOnClickListener( new View.OnClickListener() {
+        buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(GuidePart4Activity.this , GuideUrgency.class);
+                Intent intent = new Intent(GuidePart4Activity.this, GuideUrgency.class);
                 startActivity(intent);
+            }
+        });
+
+
+        buttonPre.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(GuidePart4Activity.this, GuidePart3Activity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
