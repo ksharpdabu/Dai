@@ -173,7 +173,7 @@ public class GuidePart1Activity extends Activity {
                               public void onClick(View v) {
 
                                   bossBody.setVisibility(View.VISIBLE);
-                                //                设置不可点击
+                                  //设置不可点击
                                   boss.getIvHead().setClickable(false);
                                   worker.getIvHead().setVisibility(View.GONE);
                                   iamWorker.setVisibility(View.GONE);
@@ -184,63 +184,18 @@ public class GuidePart1Activity extends Activity {
 
                                   stepClickBefore();
 
-
-                                  listener4 =   new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v) {
-                                          //设置动画
-                                          setAnimation(GuidePart1Activity.this, bossCharater, R.anim.my_boss_up);
-                                          incomeLayout.setVisibility(View.INVISIBLE);
-                                          incomeRuler.setVisibility(View.INVISIBLE);
-                                          guidestep.setVisibility(View.INVISIBLE);
-                                          incomeValue.setVisibility(View.INVISIBLE);
-
-                                          bossBody.setVisibility(View.INVISIBLE);
-                                          //                设置可点击
-                                          boss.getIvHead().setClickable(true);
-                                          worker.getIvHead().setVisibility(View.VISIBLE);
-                                          iamWorker.setVisibility(View.VISIBLE);
-                                          iamBoss.setVisibility(View.VISIBLE);
-
-
-                                      }
-                                  };
-                                  buttonPre.setOnClickListener(listener4);
-
-                                  listener3 = new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v) {
-                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
-                                          startActivity(intent);
-                                      }
-                                  };
-
-
-
-                                  listener2 = new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v) {
-                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
-                                          startActivity(intent);
-
-                                      }
-                                  };
-
-
                                   listener1 = new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
                                           stepClickAfter();
 
-                                            //设置动画
+                                          //设置动画
                                           setAnimation(GuidePart1Activity.this,bossCharater,R.anim.my_boss_scale);
 
                                           cityName.setOnClickListener(new View.OnClickListener() {
                                               @Override
                                               public void onClick(View v) {
                                                   Intent intent = new Intent(GuidePart1Activity.this, CityListActivity.class);
-
-
                                                   startActivityForResult(intent, STATIC_INTEGER_VALUE);
 
                                               }
@@ -265,6 +220,47 @@ public class GuidePart1Activity extends Activity {
 
                                       }
                                   };
+
+
+                                  listener2 = new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
+                                          startActivity(intent);
+
+                                      }
+                                  };
+
+                                  listener3 = new View.OnClickListener() {
+                                      @Override
+                                      public void onClick(View v) {
+                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
+                                          startActivity(intent);
+                                      }
+                                  };
+
+                                  listener4 =   new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            //设置动画
+                                            setAnimation(GuidePart1Activity.this, bossCharater, R.anim.my_boss_up);
+                                            incomeLayout.setVisibility(View.INVISIBLE);
+                                            incomeRuler.setVisibility(View.INVISIBLE);
+                                            guidestep.setVisibility(View.INVISIBLE);
+                                            incomeValue.setVisibility(View.INVISIBLE);
+
+                                            bossBody.setVisibility(View.INVISIBLE);
+                                            //                设置可点击
+                                            boss.getIvHead().setClickable(true);
+                                            worker.getIvHead().setVisibility(View.VISIBLE);
+                                            iamWorker.setVisibility(View.VISIBLE);
+                                            iamBoss.setVisibility(View.VISIBLE);
+
+                                        }
+                                  };
+
+
+                                  buttonPre.setOnClickListener(listener4);
                                   buttonNext.setOnClickListener(listener1);
 
                                   incomeValue.setText("100");
