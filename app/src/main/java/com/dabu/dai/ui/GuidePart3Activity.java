@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.dabu.dai.R;
+import com.dabu.dai.business.Controller;
 
 
 /**
@@ -17,7 +18,7 @@ public class GuidePart3Activity extends Activity {
     private ImageView houseImage;
     private ImageView nohouseImage;
     private Button mButton;
-
+    public Controller mController = new Controller(this );
 
 
     @Override
@@ -52,6 +53,8 @@ public class GuidePart3Activity extends Activity {
         houseImage.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mController.savePreferences("house", "有房");
+
                 Intent intent = new Intent(GuidePart3Activity.this , GuidePart4Activity.class);
                 startActivity(intent);
             }
@@ -61,6 +64,7 @@ public class GuidePart3Activity extends Activity {
         nohouseImage.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mController.savePreferences("house", "无房");
                 Intent intent = new Intent(GuidePart3Activity.this , GuidePart4Activity.class);
                 startActivity(intent);
             }

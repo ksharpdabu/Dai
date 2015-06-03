@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dabu.dai.R;
+import com.dabu.dai.business.Controller;
 import com.dabu.dai.ui_custom.MyHzScrollView;
 
 
@@ -19,6 +20,8 @@ public class GuidePart4Activity extends Activity {
     private Button buttonPre;
     private MyHzScrollView scrollView1;
     private TextView incomeValue;
+
+    public Controller mController = new Controller(this);
 
 
 
@@ -60,6 +63,9 @@ public class GuidePart4Activity extends Activity {
                         }
 
                         incomeValue.setText(String.valueOf(value2) );
+
+                        mController.savePreferences("creadit", String.valueOf(value2)+"万");
+
 //                        Toast.makeText(getContext(), String.valueOf(value2), Toast.LENGTH_LONG).show();
                     }
 

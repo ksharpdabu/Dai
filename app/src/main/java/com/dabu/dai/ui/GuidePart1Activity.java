@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -16,6 +15,7 @@ import android.widget.TextView;
 import com.dabu.city.CityListActivity;
 import com.dabu.dai.R;
 
+import com.dabu.dai.business.Controller;
 import com.dabu.dai.ui_custom.BoldTextView;
 import com.dabu.dai.ui_custom.Boss;
 import com.dabu.dai.ui_custom.MyScrollView;
@@ -63,6 +63,8 @@ public class GuidePart1Activity extends Activity {
 
     public  final static int  STATIC_INTEGER_VALUE = 1230;
 
+    public Controller mController = new Controller(this );
+
 
 
     @Override
@@ -83,6 +85,9 @@ public class GuidePart1Activity extends Activity {
                 if (resultCode == Activity.RESULT_OK) {
                     String newText = data.getStringExtra("CITY");
                     cityName.setText(newText);
+
+                    //将所选城市记录
+                    mController.savePreferences("city", newText);
                 }
                 break;
             }
@@ -91,6 +96,9 @@ public class GuidePart1Activity extends Activity {
 
     public void init()
     {
+
+
+
 
         this.incomeRuler = (RulerVertical)findViewById(R.id.guide_income_ruler);
         this.headLayout = findViewById(R.id.guide_character_split_headline);
@@ -171,6 +179,9 @@ public class GuidePart1Activity extends Activity {
         boss.getIvHead().setOnClickListener(new View.OnClickListener() {
                                                 @Override
                               public void onClick(View v) {
+
+                                  mController.savePreferences("job" , "企业家");
+
 
                                   bossBody.setVisibility(View.VISIBLE);
                                   //设置不可点击
@@ -278,6 +289,7 @@ public class GuidePart1Activity extends Activity {
                                                       value2 = value2 + 1;
                                                   }
                                                   incomeValue.setText(String.valueOf(value2));
+                                                  mController.savePreferences("salary", String.valueOf(value2));
 //                                Toast.makeText(getApplicationContext(), String.valueOf(value2), Toast.LENGTH_LONG).show();
                                                }
                                           }
@@ -298,6 +310,8 @@ public class GuidePart1Activity extends Activity {
         worker.getIvHead().setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mController.savePreferences("job" , "上班族");
 
                 workerBody.setVisibility(View.VISIBLE);
 //                设置不可点击
@@ -360,6 +374,7 @@ public class GuidePart1Activity extends Activity {
                                     value2 = value2+1;
                                 }
                                 incomeValue.setText(String.valueOf(value2));
+                                mController.savePreferences("salary", String.valueOf(value2));
 //                                Toast.makeText(getApplicationContext(), String.valueOf(value2), Toast.LENGTH_LONG).show();
                             }
                         }

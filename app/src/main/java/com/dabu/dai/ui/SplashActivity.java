@@ -7,16 +7,12 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.Toast;
 
 import com.dabu.dai.R;
 import com.dabu.dai.business.Controller;
-
-import java.util.ResourceBundle;
 
 
 /**
@@ -32,7 +28,7 @@ public class SplashActivity extends Activity {
 
     private final int SPLASH_DELAY_MILLIS = 2000; // 延迟2s
 
-    private Controller mController = new Controller( this);
+    public Controller mController = new Controller(this );
 
 //    private static final String SHAREDPREFERENCES_NAME = "first_pref";
 

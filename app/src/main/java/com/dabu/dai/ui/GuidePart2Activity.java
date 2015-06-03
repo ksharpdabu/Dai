@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.dabu.dai.R;
+import com.dabu.dai.business.Controller;
+
 
 
 /**
@@ -20,6 +22,7 @@ public class GuidePart2Activity extends Activity {
     private ImageView car;
     private ImageView bus;
     private Button mbutton;
+    public Controller mController = new Controller(this );
 
 
     @Override
@@ -56,6 +59,8 @@ public class GuidePart2Activity extends Activity {
             @Override
             public void onClick(View v) {
 
+                mController.savePreferences("car", "有车");
+
                 Animation alpha = AnimationUtils.loadAnimation(GuidePart2Activity.this, R.anim.right_out);
                 carAnim(alpha);
                 car.startAnimation(alpha);
@@ -67,6 +72,8 @@ public class GuidePart2Activity extends Activity {
         bus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mController.savePreferences("car", "无车");
 
                 Animation alpha = AnimationUtils.loadAnimation(GuidePart2Activity.this, R.anim.right_out);
                 //设置动画监听器，确保在执行完动画后在切换到新的Activity

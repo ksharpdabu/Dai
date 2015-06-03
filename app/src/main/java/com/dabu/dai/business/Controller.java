@@ -6,22 +6,45 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.text.TextUtils;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by HIPAA on 2015/5/19.
  */
 public class Controller {
 
     private Context mContext ;
+    private static final String SHAREDPREFERENCES_NAME = "first_pref";
+
 
     // 判断是否第一次使用app
     boolean isFirstIn = false;
-    private static final String SHAREDPREFERENCES_NAME = "first_pref";
+
+
+
     //check firstrun end
+
+
+
+
+
+
 
 
     public  Controller(Context context){
         this.mContext = context;
+
+
+
     }
+
+
+
 
     /**
      * 判断是否第一次使用app
@@ -49,7 +72,7 @@ public class Controller {
     }
 
     /**
-     * 判断是否第一次使用app
+     * 判断是否第一次申请
      */
     public  boolean  isFirstApply( ) {
 
@@ -71,6 +94,112 @@ public class Controller {
         }
         return result;
     }
+
+
+    public  void savePreferences( String key, String value) {
+        SharedPreferences preferences = mContext.getSharedPreferences(
+                SHAREDPREFERENCES_NAME, mContext.MODE_PRIVATE);
+        preferences.edit().putString(key, value).commit();
+
+
+    }
+
+
+    public String getPreferences(String key) {
+
+        SharedPreferences preferences = mContext.getSharedPreferences(
+                SHAREDPREFERENCES_NAME, mContext.MODE_PRIVATE);
+        String result =  preferences.getString( key , "nothing");
+
+        return result;
+
+    }
+
+
+
+
+    public boolean CreatePerson(String phone , String mPass) {
+        boolean result = false;
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        parameters.add(new BasicNameValuePair("phone" ,phone));
+        parameters.add(new BasicNameValuePair("pass" ,mPass));
+
+        Connector mConnector = new Connector(mContext);
+        String code = mConnector.Create(parameters);
+        if(code != null)
+        { if( code.equals("1")) {
+                    result = true;
+          }
+
+        }
+
+        return result;
+    }
+
+
+    public List<NameValuePair> setDetail(String phone , String mPass) {
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+
+        String id_card = getPreferences("id_card");
+        String name = getPreferences("name");
+        String salary = getPreferences("salary");
+        String time = getPreferences("time");
+        String car = getPreferences("car");
+        String house = getPreferences("house");
+        String city = getPreferences("city");
+        String creadit = getPreferences("creadit");
+        String job = getPreferences("job");
+
+        parameters.add(new BasicNameValuePair("phone" ,phone));
+        parameters.add(new BasicNameValuePair("pass" ,mPass));
+        parameters.add(new BasicNameValuePair("id_card" ,id_card));
+        parameters.add(new BasicNameValuePair("name" ,name));
+        parameters.add(new BasicNameValuePair("salary" ,salary));
+        parameters.add(new BasicNameValuePair("time" ,time));
+        parameters.add(new BasicNameValuePair("car" ,car));
+        parameters.add(new BasicNameValuePair("house" ,house));
+        parameters.add(new BasicNameValuePair("city" ,city));
+        parameters.add(new BasicNameValuePair("creadit" ,creadit));
+        parameters.add(new BasicNameValuePair("job" ,job));
+
+        return parameters;
+
+
+    }
+
+
+
+
+    public boolean CreateDetail( List<NameValuePair> parameters) {
+
+
+        Connector mConnector = new Connector(mContext);
+        String code = mConnector.CreateDetail(parameters);
+        if( code.equals("1")) {
+            return true;
+        } else {
+            return false;
+        }
+
+
+    }
+
+
+    public JSONObject show(String phone , String mPass) {
+
+        List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+        parameters.add(new BasicNameValuePair("phone" ,phone));
+        parameters.add(new BasicNameValuePair("pass" ,mPass));
+
+        Connector mConnector = new Connector(mContext);
+        JSONObject json = mConnector.Show(parameters);
+
+
+
+        return json;
+    }
+
+
 
 
 
