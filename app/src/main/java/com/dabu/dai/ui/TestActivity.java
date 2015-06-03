@@ -27,8 +27,9 @@ public class TestActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mTextView = new TextView(this);
-        setContentView(mTextView);
+
+        setContentView(R.layout.activity_main);
+        mTextView = (TextView) findViewById(R.id.testtext);
         List<NameValuePair> parameters = new ArrayList<NameValuePair>();
         MyApplication myApplication = (MyApplication) getApplicationContext();
 
@@ -39,13 +40,13 @@ public class TestActivity extends Activity {
         String mstring = "电话号码:"+json.getString("phone")+"\n"+
                 "工作:"+json.getString("job")+"\n"+
                 "姓名:"+json.getString("name")+"\n"+
-                "房产:"+json.getString("job")+"\n"+
-                "汽车:"+json.getString("job")+"\n"+
+                "房产:"+json.getString("house")+"\n"+
+                "汽车:"+json.getString("car")+"\n"+
                 "身份证:"+json.getString("id_card")+"\n"+
-                "月收入:"+json.getString("job")+"\n"+
+                "月收入:"+json.getString("salary")+"\n"+
                 "贷款城市:"+json.getString("city")+"\n"+
-                "贷款金额:"+json.getString("job")+"\n"+
-                "工作:"+json.getString("job")+"\n";
+                "贷款金额:"+json.getString("creadit")+"\n"+
+                "贷款时间:"+json.getString("time")+"\n";
 
 
             mTextView.setText(mstring);
@@ -53,7 +54,7 @@ public class TestActivity extends Activity {
 
 
 
-            Log.e("mstring" , mstring);
+            Log.e("mstring", mstring);
         } catch ( JSONException e) {
             e.printStackTrace();
         }
