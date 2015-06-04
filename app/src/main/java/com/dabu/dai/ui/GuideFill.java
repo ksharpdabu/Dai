@@ -54,7 +54,9 @@ public class GuideFill extends Activity {
                 MyApplication myApplication = (MyApplication) getApplicationContext();
 
 
-                Log.e("密码和帐号",myApplication.getPhnum()+myApplication.getPass());
+
+
+                Log.e("密码和帐号GuideFill",myApplication.getPhnum()+myApplication.getPass());
 
                 //检测申请日期是否合法
                 Checkapply mcheackApply = new Checkapply();

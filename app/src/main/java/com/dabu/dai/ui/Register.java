@@ -64,7 +64,10 @@ public class Register extends Activity {
                 //获取用户输入的手机号码
                 String phoneNumber = editText.getText().toString().trim();
 
-                MyApplication myApplication = (MyApplication) Register.this.getApplicationContext();
+                MyApplication myApplication = (MyApplication) getApplicationContext();
+
+
+
                 myApplication.setPass("123456");
                 myApplication.setPhnum(phoneNumber);
                 Log.e("密码和帐号", myApplication.getPhnum() + myApplication.getPass());
