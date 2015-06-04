@@ -46,19 +46,14 @@ public class GuideFill extends Activity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mController.savePreferences("id_card", mEditText.getText().toString().trim());
-                mController.savePreferences("name", nameEditText.getText().toString().trim());
-
-                Log.e("日期", new LocalDate().toString());
-
-                mController.savePreferences("time",  new LocalDate().toString());
 
 
 
-                List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+
+
                 MyApplication myApplication = (MyApplication) getApplicationContext();
 
-                parameters = mController.setDetail(myApplication.getPhnum(),myApplication.getPass());
+
                 Log.e("密码和帐号",myApplication.getPhnum()+myApplication.getPass());
 
                 //检测申请日期是否合法
@@ -66,6 +61,17 @@ public class GuideFill extends Activity {
                 boolean flag = mcheackApply.isApplyOk(getBaseContext(),myApplication.getPhnum(),myApplication.getPass());
 
                 if(flag) {
+
+                    mController.savePreferences("id_card", mEditText.getText().toString().trim());
+                    mController.savePreferences("name", nameEditText.getText().toString().trim());
+
+                    Log.e("日期", new LocalDate().toString());
+                    mController.savePreferences("time",  new LocalDate().toString());
+
+                    List<NameValuePair> parameters = new ArrayList<NameValuePair>();
+                    parameters = mController.setDetail(myApplication.getPhnum(),myApplication.getPass());
+
+
                     if(mController.CreateDetail(parameters)) {
                         Toast.makeText(getApplicationContext(), "申请成功", Toast.LENGTH_LONG).show();
 
@@ -74,6 +80,9 @@ public class GuideFill extends Activity {
                     }
                 }else {
                     Toast.makeText(getApplicationContext(), "不能两周内重复申请带宽", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(GuideFill.this , TestActivity.class);
+                    startActivity(intent);
                 }
 
 
