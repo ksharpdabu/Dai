@@ -11,10 +11,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dabu.city.CityListActivity;
 import com.dabu.dai.R;
 
+import com.dabu.dai.business.Checkapply;
 import com.dabu.dai.business.Controller;
 import com.dabu.dai.ui_custom.BoldTextView;
 import com.dabu.dai.ui_custom.Boss;
@@ -83,11 +85,19 @@ public class GuidePart1Activity extends Activity {
         switch(requestCode) {
             case (STATIC_INTEGER_VALUE) : {
                 if (resultCode == Activity.RESULT_OK) {
-                    String newText = data.getStringExtra("CITY");
-                    cityName.setText(newText);
+                    String city = data.getStringExtra("CITY");
 
-                    //将所选城市记录
-                    mController.savePreferences("city", newText);
+
+
+                    if( Checkapply.isCityOk(city)){
+                        cityName.setText(city);
+
+                        //将所选城市记录
+                        mController.savePreferences("city", city);
+                    }else {
+                        Toast.makeText(this,"所选城市不合要求，请重选",Toast.LENGTH_LONG).show();
+                    }
+
                 }
                 break;
             }
