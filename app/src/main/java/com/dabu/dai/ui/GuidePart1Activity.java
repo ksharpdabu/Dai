@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -89,14 +90,12 @@ public class GuidePart1Activity extends Activity {
 
 
 
-                    if( Checkapply.isCityOk(city)){
+
                         cityName.setText(city);
 
-                        //将所选城市记录
-                        mController.savePreferences("city", city);
-                    }else {
-                        Toast.makeText(this,"所选城市不合要求，请重选",Toast.LENGTH_LONG).show();
-                    }
+//                        //将所选城市记录
+//                        mController.savePreferences("city", city);
+
 
                 }
                 break;
@@ -246,19 +245,30 @@ public class GuidePart1Activity extends Activity {
                                   listener2 = new View.OnClickListener() {
                                       @Override
                                       public void onClick(View v) {
-                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
-                                          startActivity(intent);
+//                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
+//                                          startActivity(intent);
 
+
+                                          String city = cityName.getText().toString();
+
+                                          Log.e("判断城市", Checkapply.isCityOk(city) ? "真的":"假的");
+                                          if( Checkapply.isCityOk(city)){
+
+
+                                              //将所选城市记录
+                                              mController.savePreferences("city", city);
+
+
+                                              Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
+                                              startActivity(intent);
+
+                                          }else {
+                                              Toast.makeText(getBaseContext(),"所选城市不合要求，请重选",Toast.LENGTH_LONG).show();
+                                          }
                                       }
                                   };
 
-                                  listener3 = new View.OnClickListener() {
-                                      @Override
-                                      public void onClick(View v) {
-                                          Intent intent = new Intent(GuidePart1Activity.this, GuidePart2Activity.class);
-                                          startActivity(intent);
-                                      }
-                                  };
+
 
                                   listener4 =   new View.OnClickListener() {
                                         @Override
